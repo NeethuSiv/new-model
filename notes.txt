@@ -1,0 +1,88 @@
+What is Git?
+Git is a distributed version control system that tracks changes in source code 
+during software development. It allows multiple developers to work on the same project 
+simultaneously without interfering with each other's work.
+
+Key Concepts:
+
+Repository (Repo): A storage location for your project’s files and the history of changes.
+Commit: A snapshot of your project at a certain point in time.
+Branch: A separate line of development.
+Merge: Combining changes from different branches.
+Remote: A version of your repository hosted on a server, e.g., GitHub or GitLab.
+
+
+Basic Git Commands
+
+git init : Creating a Repository
+git status : Checking the Status
+git clone <repository-url> : Cloning a Repository
+
+git add <file> : Adding Changes
+git add . : Adding Changes
+
+git commit -m "Commit message" : Committing Changes
+
+git log : Viewing Commit History
+
+
+git config --global user.name "name"
+git config --global user.email "mailid"
+git config --global init.defaultBranch <branch_name/>  : setting the default branch
+
+## Incase the main is not the default branch 
+git config --global --get-all init.defaultBranch : see all the values set for init.branches
+git config --global --unset-all init.defaultBranch : Clearing all existing values for init.Branch
+git config --global init.defaultBranch main : Setting up the amin branch
+git config --global init.defaultBranch : verify the configuration
+
+git status : give all the files that are untracked
+        untracked : git doesnt care for the changes in that files
+git rm --cached <file_name>  : Remove the file from being tracked
+
+when we add the files, these files are in an envrionment called "STAGING"
+
+next is to commit
+    Taking the snapshot of your repository in this point in time
+    So that in the future we can come back
+git commit -m "commit message" : Commit the staged files to history 
+git diff : See what have changed
+
+
+In git we have 3 envrionment
+    Working files
+    STAGING
+    Commit
+git restore --staged <file_name>  : removes the file from the staging and back to working file
+git commit -a -m "commit message" : moves the whole untracked files to the commit envrionment with out going to stagging 
+
+git rm "<file_name>"  : removes the file
+git restore "file_name"  : restore the file # can only restore files that are tracked by git
+
+git mv "KCC Logo.png" "Primary Logo.png" : mv => move from old file name to new file name
+git log  : see all the commits made
+git log --oneline  :gets the messages of the commits
+git commit -m "message" --amend
+
+git log -p : displays the commit history along with the patch (diff) showing changes made in each commit
+git reset <commit_id> : reset back to the commit
+
+git rebase -i --root :  allows you to interactively rebase and edit the root commit of a repository
+:x -> to exit rebase window
+
+git branch <branch_name>  : create a new branch
+git switch <branch_name>  : Switch to another branch
+git switch -c <branch_name>  : Create a branch and Switch to another branch
+
+Going to merge Temp branch to Main branch
+    Switch to the Main branch
+git merge -m "message : Merge temp back to main" <branch_name>
+git branch -d <branch_name> : delete branch
+
+Merge Conflit
+After making a branch the main branch changes , there will be a conflict when merging back to main
+
+
+Head : The current data in the main 
+Incomming change : The change that is comming from the temp branch.
+We can decide on what to keep and delete the rest
